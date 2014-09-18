@@ -1,7 +1,7 @@
-require './app/controllers/default_controller'
+require './app/controllers/public_controller'
 require 'sqlite3'
 
-class DefaultModel
+class PublicModel
   def self.look_name_up(given_name)
     begin
       db = SQLite3::Database.open('./db/census.db')
@@ -30,6 +30,6 @@ class DefaultModel
     ensure
       db.close
     end
-    DefaultController.age = age
+    PublicController.age = age
   end
 end
