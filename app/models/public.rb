@@ -1,4 +1,6 @@
 require './app/controllers/public_controller'
+require './app/models/person.rb'
+
 require 'sqlite3'
 
 class PublicModel
@@ -30,6 +32,8 @@ class PublicModel
     ensure
       db.close
     end
-    PublicController.age = age
+    # Create a person
+    p = PersonModel.new(given_name, age)
+    return p
   end
 end

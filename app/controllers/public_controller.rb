@@ -11,7 +11,8 @@ class PublicController
     unless @name.empty?
       name_exists = PublicModel.look_name_up(@name)
       if name_exists
-    	 PublicModel.look_age_up(@name)
+    	 p = PublicModel.look_age_up(@name)
+       @age = p.age
        PublicView.return_data
        exit
       else

@@ -1,5 +1,7 @@
 require './app/controllers/public_controller'
 require './app/controllers/login_controller'
+require 'colorize'
+
 class PublicView
 
   def self.error(errno)
@@ -13,6 +15,8 @@ class PublicView
       puts "Error: #{LoginController.username} wasn't found in the login database."
     elsif errno == 5
       puts "Error: Incorrect password for #{LoginController.username}."
+    elsif errno == 6
+      puts "Error: The entry for #{AdminController.p.name} already exists.".red
     else
       puts "Unknown error."
     end
@@ -20,7 +24,7 @@ class PublicView
   end
 
   def self.load
-    puts "Welcome to the census. Please enter the name you'd like to look up."
+    puts "Welcome to the census, #{LoginController.username}. Please enter the name you'd like to look up."
     PublicController.name = gets.chomp
   end
 
