@@ -17,6 +17,8 @@ class PublicView
       puts "Error: Incorrect password for #{LoginController.username}."
     elsif errno == 6
       puts "Error: The entry for #{AdminController.p.name} already exists.".red
+    elsif errno == 7
+      puts "Error: The entry for #{AdminController.p.name} doesn't exist.".red
     else
       puts "Unknown error."
     end

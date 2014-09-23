@@ -15,24 +15,34 @@ class AdminView
     AdminController.choice = gets.chomp.to_i
   end
 
-  def self.get_details(p)
-    puts "Creating new entry...".yellow
+  def self.get_details(p, what)
+    if what == :add
+      puts "Creating new entry...".yellow
+    elsif what == :remove
+      puts "Deleting entry...".red
+    end
     puts "Getting information".green
-    print "Enter new name: "
+    print "Enter name: "
     n = gets.chomp
-    print "Enter new age: "
-    a = Integer(gets.chomp) rescue nil
-    if a == nil
-      puts "The age must be an integer number!".red
-      exit
+    if what == :add
+      print "Enter age: "
+      a = Integer(gets.chomp) rescue nil
+      if a == nil
+        puts "The age must be an integer number!".red
+        exit
+      end
+      p.age = a
     end
     p.name = n
-    p.age = a
     return p
   end
 
-  def self.success
-    puts "Entry for ".green + AdminController.p.name.yellow + " correctly added to the census!".green
+  def self.success(what)
+    if what == :add
+      puts "Entry for " + AdminController.p.name.green + " correctly added to the census."
+    elsif what == :remove
+      puts "Entry for " + AdminController.p.name.red + " correctly removed from the census." 
+    end
     exit
   end
 

@@ -26,4 +26,16 @@ class AdminModel
       db.close
     end
   end
+
+  def self.remove(p)
+    begin
+      db = SQLite3::Database.open('./db/census.db')
+      re = db.execute("DELETE FROM ages WHERE name=\"#{p.name}\";")
+    rescue
+      puts "Database error.".red
+      exit
+    ensure
+      db.close
+    end
+  end
 end
