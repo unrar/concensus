@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+
 require './app/controllers/public_controller'
 require './app/controllers/login_controller'
 require './app/controllers/admin_controller'
