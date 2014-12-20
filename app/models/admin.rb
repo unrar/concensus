@@ -15,6 +15,18 @@ class AdminModel
     end
   end
 
+  def self.edit(p, np)
+    begin
+      db = SQLite3::Database.open('./db/census.db')
+      re = db.execute ("UPDATE ages SET name='#{np.name}', age=#{np.age} WHERE name='#{p.name}';")
+    rescue
+      puts "Database error.".red
+      exit
+    ensure
+      db.close
+    end
+  end
+
   def self.write(p)
     begin
       db = SQLite3::Database.open('./db/census.db')

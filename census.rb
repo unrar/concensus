@@ -12,5 +12,5 @@ if LoginController.level == 2
 elsif LoginController.level == 1
   PublicController.main
 else
-  puts "wtf"
+  puts 'wtf'
 end

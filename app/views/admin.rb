@@ -20,18 +20,29 @@ class AdminView
       puts "Creating new entry...".yellow
     elsif what == :remove
       puts "Deleting entry...".red
+    elsif what == :preedit
+      puts "Editing entry...".blue
+    elsif what == :edit
+      puts "Please enter the new data. If one value is unchanged, keep it blank.".green
     end
-    puts "Getting information".green
+    unless what == :edit
+      puts "Getting information".green
+    end
     print "Enter name: "
     n = gets.chomp
-    if what == :add
+    if what == :add or what == :edit
       print "Enter age: "
-      a = Integer(gets.chomp) rescue nil
-      if a == nil
-        puts "The age must be an integer number!".red
-        exit
+      age_str = gets.chomp
+      if age_str == "" and what == :edit
+        p.age = age_str
+      else
+        a = Integer(age_str) rescue nil
+        if a == nil
+          puts "The age must be an integer number!".red
+          exit
+        end
+        p.age = a
       end
-      p.age = a
     end
     p.name = n
     return p
@@ -42,8 +53,10 @@ class AdminView
       puts "Entry for " + AdminController.p.name.green + " correctly added to the census."
     elsif what == :remove
       puts "Entry for " + AdminController.p.name.red + " correctly removed from the census." 
+    elsif what == :edit
+      puts "Entry for " + AdminController.p.name.red + " correctly edited."
     end
-    exit
+    AdminController.main
   end
 
   def self.process(arr)
@@ -52,5 +65,6 @@ class AdminView
       puts "Name: " + row['name'].green + "; Age: " + row['age'].to_s.yellow + "."
     end
     puts "Listing finished.".red
+    AdminController.main
   end
 end

@@ -19,6 +19,8 @@ class PublicView
       puts "Error: The entry for #{AdminController.p.name} already exists.".red
     elsif errno == 7
       puts "Error: The entry for #{AdminController.p.name} doesn't exist.".red
+    elsif errno == 8
+      puts "Error: There's no change between the original and new values of the #{AdminController.p.name} edit.".red
     else
       puts "Unknown error."
     end
@@ -32,5 +34,13 @@ class PublicView
 
   def self.return_data
     puts "#{PublicController.name} was found in the census. He/She is #{PublicController.age}."
+    print "Do you want to exit? (y/n) "
+    c = gets.chomp
+    if c == "y"
+      return true
+    else
+      return false
+    end
+
   end
 end
