@@ -14,11 +14,11 @@ How to use concensus
 It's a very simple application, with no GUI yet. When started, it'll ask for a username and password. If you're an administrator, you'll login with your data (which you manually entered in the SQLite database) and access the admin view. If you're a normal user, you'll login with "anonymous/anonymous".
 There are a few things you can do after you've logged in as an administrator:
 
-# Look a name up and be told its age (same as public view).
-# Add an entry to the census.
-# Remove an entry from the census.
-# Edit an entry from the census.
-# List all the entries from the census.
+1. Look a name up and be told its age (same as public view).
+2. Add an entry to the census.
+3. Remove an entry from the census.
+4. Edit an entry from the census.
+5. List all the entries from the census.
 
 TODO
 ------
